@@ -17,3 +17,22 @@
 >>该配置项用于设置是否为生产环境构建生成 source map，一般在生产环境下为了快速定位错误信息，我们都会开启 source map，当然，实际上他本身就默认开启了，所以可设置，也可不设置
 >开启 source map 后，我们打包输出的文件中会包含 js 对应的 .map 文件
 [JavaScript Source Map 详解](http://www.ruanyifeng.com/blog/2013/01/javascript_source_map.html)
+>chainWebpack(表示并不是很理解，但是，简单配置应该还是没太大问题的)
+>>查阅的解释大致是这样的，chainWebpack 配置项允许我们更细粒度的控制 webpack 的内部配置，其集成的是 webpack-chain 这一插件，该插件可以让我们能够使用链式操作来修改配置```// 用于做相应的合并处理
+const merge = require('webpack-merge');
+module.exports = {
+    ...   
+    // config 参数为已经解析好的 webpack 配置
+    chainWebpack: config => {
+        config.module
+            .rule('images')
+            .use('url-loader')
+            .tap(options =>
+                merge(options, {
+                  limit: 5120,
+                })
+            )
+    }   
+    ...
+}...
+```
