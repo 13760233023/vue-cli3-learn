@@ -19,20 +19,20 @@
 [JavaScript Source Map 详解](http://www.ruanyifeng.com/blog/2013/01/javascript_source_map.html)
 >chainWebpack(表示并不是很理解，但是，简单配置应该还是没太大问题的)
 >>查阅的解释大致是这样的，chainWebpack 配置项允许我们更细粒度的控制 webpack 的内部配置，其集成的是 webpack-chain 这一插件，该插件可以让我们能够使用链式操作来修改配置
-```// 用于做相应的合并处理
-const merge = require('webpack-merge');
-module.exports = {
-    // config 参数为已经解析好的 webpack 配置
-    chainWebpack: config => {
-        config.module
-            .rule('images')
-            .use('url-loader')
-            .tap(options =>
-                merge(options, {
-                  limit: 5120,
-                })
-            )
-    }   
-}
-```
+>```// 用于做相应的合并处理
+>const merge = require('webpack-merge');
+>module.exports = {
+>    // config 参数为已经解析好的 webpack 配置
+>    chainWebpack: config => {
+>        config.module
+>            .rule('images')
+>            .use('url-loader')
+>            .tap(options =>
+>                merge(options, {
+>                  limit: 5120,
+>                })
+>            )
+>    }   
+>}
+>```
 >以上操作我们可以成功修改 webpack 中 module 项里配置 rules 规则为图片下的 url-loader 值，将其 limit 限制改为 5M
