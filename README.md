@@ -15,3 +15,5 @@
 >>当我们执行打包的时候，输出的文件夹就不再是默认的dist文件夹，而会变成mydist文件夹
 >productionSourceMap
 >>该配置项用于设置是否为生产环境构建生成 source map，一般在生产环境下为了快速定位错误信息，我们都会开启 source map，当然，实际上他本身就默认开启了，所以可设置，也可不设置
+>开启 source map 后，我们打包输出的文件中会包含 js 对应的 .map 文件
+[JavaScript Source Map 详解](http://www.ruanyifeng.com/blog/2013/01/javascript_source_map.html)
