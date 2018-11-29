@@ -85,3 +85,5 @@ env文件的介绍和环境设置
 >>>console.log(process.env.NODE_ENV);//staging(在终端输出结果)
 >>也就是说，.env.[mode].local文件的配置权重大于.env.[mode]文件
 >.env.[mode].local > .env.[mode] 
+#下面讲一下额外的配置
+***
