@@ -59,3 +59,29 @@ env文件的介绍和环境设置
 >.env.[mode].local   # 只在指定的模式中被载入，但会被 git 忽略...
 >```
 >首先创建一个.env.test文件，使其只能在test环境下被加载
+>>```
+>>NODE_ENV=stage
+>>VUE_APP_TITLE=stage mode
+>>```
+>在vue.config.js里面是这样访问的
+>console.log(process.env.NODE_ENV);//development(在终端输出结果)
+>输出的结果并不是想象中的test~
+>进入下一步，来到根目录的package.json添加修改一下
+>>```
+>>"scripts": {
+>>  "stage": "vue-cli-service serve --mode stage"
+>>}
+>>```
+>>这个时候在终端执行npm run stage
+>>可以看到，这时终端输出的信息就是想要的stage
+>如果是 .env.stage.local 文件中配置成上方这样，答案便是 staging
+>>.env.stage.local文件
+>>```
+>>NODE_ENV=staging
+>>VUE_APP_TITLE=staging mode
+>>VUE_APP_NAME=project
+>>```
+>>此刻，当我们执行npm run stage时--->想一下之前.env.stage文件中,NODE_ENV=stage,理论上输出也会是stage，然而
+>>>console.log(process.env.NODE_ENV);//staging(在终端输出结果)
+>>也就是说，.env.[mode].local文件的配置权重大于.env.[mode]文件
+>.env.[mode].local > .env.[mode] 
