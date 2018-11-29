@@ -18,7 +18,7 @@
 >开启 source map 后，我们打包输出的文件中会包含 js 对应的 .map 文件
 [JavaScript Source Map 详解](http://www.ruanyifeng.com/blog/2013/01/javascript_source_map.html)
 >chainWebpack(表示并不是很理解，但是，简单配置应该还是没太大问题的)
->>查阅的解释大致是这样的，chainWebpack 配置项允许我们更细粒度的控制 webpack 的内部配置，其集成的是 webpack-chain 这一插件，该插件可以让我们能够使用链式操作来修改配置
+>查阅的解释大致是这样的，chainWebpack 配置项允许我们更细粒度的控制 webpack 的内部配置，其集成的是 webpack-chain 这一插件，该插件可以让我们能够使用链式操作来修改配置
 >```// 用于做相应的合并处理
 >const merge = require('webpack-merge');
 >module.exports = {
@@ -36,3 +36,20 @@
 >}
 >```
 >以上操作我们可以成功修改 webpack 中 module 项里配置 rules 规则为图片下的 url-loader 值，将其 limit 限制改为 5M
+>devServer
+>devServer 项用于配置 webpack-dev-server 的行为，使得我们可以对本地服务器进行相应配置，我们在命令行中运行的 yarn serve 对应的命令 vue-cli-service serve 其实便是基于 webpack-dev-server 开启的一个本地服务器。
+>>```devServer: {
+>>        open: true, // 是否自动打开浏览器页面
+>>        host: '0.0.0.0', // 指定使用一个 host。默认是 localhost
+>>        port: 8080, // 端口地址
+>>        https: false, // 使用https提供服务
+>>        proxy: null, // string | Object 代理设置
+>>        // 提供在服务器内部的其他中间件之前执行自定义中间件的能力
+>>        before: app => {
+>>          // `app` 是一个 express 实例
+>>        }
+>> }```
+>>
+>>
+>>
+>>
